@@ -1,0 +1,92 @@
+body{
+  overflow:hidden;
+  font-family: "Arial";
+  font-size: 14px;
+}
+h3{
+  font-size: 18px;
+  margin-left: 20px;
+}
+h4{
+  font-size: 18px;
+}
+.container {
+  width: 1840px;
+  background-color: #FFEFDA;
+  margin-top: 13px;
+  margin-left: 10px;
+}	
+
+.container1 {
+  background-color: #81b86d;
+  width: 35%;
+  padding: 5px 1px 15px 1px;
+  border-radius: 3px;
+  margin: auto;
+  margin-top: 5%;
+  opacity: .8;
+}		
+
+.container-inside {
+  background-color: white;
+  width: 90%;
+  padding: 50px 20px 110px 20px;
+  border-radius: 3px;
+  margin: auto;
+  margin-top: 5%;
+
+}   
+
+/* Style the input elements and the submit button */
+input[type=text], input[type=submit] {
+  width: 75%;
+  padding: 8px;
+  margin: 0px 10px;
+  display: inline-block;
+  border: 1px solid black;
+  box-sizing: border-box;
+
+}
+
+/* Add margins to the checkbox */
+input[type=checkbox] {
+  margin-top: 16px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+}
+
+input[type=submit]:hover {
+  opacity: 0.8;
+}
+.container2 {
+  width: 1840px;
+  background-color: #FFEFDA;
+  margin-top: 20px;
+  margin-left: 10px;
+  height: 90%;
+  position: absolute;
+} 
+
+.button {
+  border: none;  background-color: #d8d8d8;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  float: right;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-top: 50px;
+}
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
