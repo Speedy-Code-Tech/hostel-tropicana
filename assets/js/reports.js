@@ -68,20 +68,20 @@ function confdelete(){
 	
 };//end submit $update-item-form
 
-function return_report(tagid){
+function return_report(tagid,realId){
 
-	
-	
+    
 	$.ajax({
 		url: '../data/returns.php',
         type: 'post',
         dataType: 'json',
         data: {
         
-            ids 			: tagid
+            ids 			: tagid,
+            myId: realId
         },
 		success:function(data){
-			console.log(data);
+			console.log("The Data Is ",data);
 			$('#modal-returns').modal('show');
             $('#view-items').text(data.item);
             $('#date_borrowed').val(data.date_borrowed);
@@ -90,7 +90,11 @@ function return_report(tagid){
 			$('#category').val(data.category);
 			$('#view-quan').val(data.quantity);
 			$('#view-item').val(data.item);
-			
+			$('#uniqueId').val(data.id);
+			$("#set-quan").attr({
+                "max" : data.quantity,        // substitute your own
+                "min" : 0          // values (or variables) here
+             });
 		},
 		error:(data)=>{
 			console.log(data)
@@ -101,7 +105,8 @@ function return_report(tagid){
 
 $(document).on('submit', '#modal-returns', function(event) {
 	event.preventDefault();
-	/* Act on the event */
+
+    /* Act on the event */
 	var validate = 0;
 	var form_datas = new Array(
                     $('input[id=tag_id]'),
@@ -110,6 +115,8 @@ $(document).on('submit', '#modal-returns', function(event) {
                     $('#view-quan'),
                     $('#set-quan'),
                     $('#category'),
+                    $('#uniqueId'),
+
                  		);
                             var data = new Array(form_datas.length);
                             for(var i = 0; i < form_datas.length; i++){
@@ -149,4 +156,6 @@ $(document).on('submit', '#modal-returns', function(event) {
 				}
             });//end a
 	}//end valdidate
+   
+	
 });

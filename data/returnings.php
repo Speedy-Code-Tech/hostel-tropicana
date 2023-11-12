@@ -9,7 +9,8 @@ if(isset($_POST['data'])){
     $quan = $data[3];
     $setQuan = $data[4];
     $category = $data[5];
-	$result = $reps->return_return($tag_id,$item,$borrowed,$quan,$setQuan,$category);
+    $myId = $data[6];
+	$result = $reps->return_return($tag_id,$item,$borrowed,$quan,$setQuan,$category,$myId);
 
 
 	if($result){

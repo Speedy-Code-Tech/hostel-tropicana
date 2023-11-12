@@ -41,7 +41,7 @@ if(isset($_POST['choice'])){
     			<?php if($r['status']=='Borrowed'){?>
 				
 					<button class="btn btn-sm btn-success" onclick="fill_views_report('<?= $r['id'];?>')">Details</button>
-					<button class="btn btn-sm btn-warning" onclick="return_report('<?= $r['tagid'];?>')">Return</button>
+					<button class="btn btn-sm btn-warning" onclick="return_report('<?= $r['tagid'];?>','<?= $r['id'];?>')">Return</button>
 
 				<?php } ?>
 				</td>
@@ -106,7 +106,7 @@ if(isset($_POST['choice'])){
 					<?php if($r['status']=='Borrowed'){?>
 					
 						<button class="btn btn-sm btn-success" onclick="fill_views_report('<?= $r['id'];?>')">Details</button>
-						<button class="btn btn-sm btn-warning" onclick="return_report('<?= $r['tagid'];?>')">Return</button>
+						<button class="btn btn-sm btn-warning" onclick="return_report('<?= $r['tagid'];?>','<?= $r['id'];?>')">Return</button>
 	
 					<?php } ?>
 					</td>

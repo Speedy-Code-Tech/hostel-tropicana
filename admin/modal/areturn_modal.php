@@ -12,6 +12,7 @@
 				
 				
 				  <div class="form-group">
+					<input type="hidden"  id="uniqueId">
 				    <label class="control-label col-sm-2" for="view-item">Item:</label>
 				    <div class="col-md-10">
 				      <spaninp id="view-items" ></spaninp> <span id="view-quans" class="text-danger"></span>
@@ -22,7 +23,7 @@
 				  <div class="form-group">
 				    <label class="control-label col-sm-2" for="view-quan">Quantity:</label>
 				    <div class="col-sm-10">
-				      <input type="number" class="form-control" id="set-quan">
+				      <input type="number" class="form-control" id="set-quan" >
 				    </div>
 				  </div>
 				  <input type="hidden" id="date_borrowed">
