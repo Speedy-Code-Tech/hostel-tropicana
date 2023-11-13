@@ -159,3 +159,56 @@ $(document).on('submit', '#modal-returns', function(event) {
    
 	
 });
+
+
+$(document).on('submit', '#date-sorts', function(event) {
+	event.preventDefault();
+
+    let fromDate = $("#From").val()
+    let toDate = $("#To").val()
+   
+
+            $.ajax({
+                url: '../data/show_report.php',
+                type: 'post',
+                data: {
+                    // datas: JSON.stringify(data)
+                    fromDates:fromDate,
+                    toDates:toDate
+                },
+                success: function(event){
+                    console.log("Date Sorted", event)
+                    $('#show-report').html(event);
+					
+                },
+                error: (err)=>{
+					console.log("Error",err);
+              
+				}
+            });
+    
+
+});
+
+
+function changeRoom(){
+    let room = $("#room-change").val()
+    console.log(room) 
+    $("#room").val(room)
+}
+
+function changeRoomEquipement(){
+    let room = $("#room-change-equipement").val()
+    console.log(room) 
+    $("#room-equipment").val(room)
+}
+
+function changeRoomTools(){
+    let room = $("#room-change-tools").val()
+    console.log(room) 
+    $("#room-tools").val(room)
+}
+
+
+
+

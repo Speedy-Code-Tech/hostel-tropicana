@@ -79,24 +79,27 @@ include_once('../include/header.php'); ?>
                 </select>
                 
                
-                <div class="dateSorter" style=" display:flex;
-                width: 20%;
-    justify-content: space-evenly;
-    position:absolute; right: 330px; z-index: 3;">
-                 
-                  <input type="radio" name="dates" class="rad" value="Daily" style=" accent-color: rgb(3, 130, 0);">
-                  <input type="radio" name="dates" class="rad" value="Weekly" style=" accent-color: rgb(3, 130, 0);">
-                  <input type="radio" name="dates" class="rad" value="Monthly" style=" accent-color: rgb(3, 130, 0);">
-                
-                </div>
-               <div class="contanerlabels">
-                <p>Daily</p>
-                <p>Weekly</p>
-                <p>Monthly</p>
-               </div>
+               
+                 <div style=" display:flex;
+
+   
+    position:absolute; right: 130px; z-index: 3; align-items: center;">
+    <form id="date-sorts" class="container-fluid p-0 m-0" style="display:flex;
+
+justify-content: space-evenly;
+z-index: 3; align-items: center; gap:2px;">
+                <label for="From">From</label>
+                <input type="date" name="From" id="From" class="form-control">
+                <label for="To">To</label>
+                <input type="date" name="To" id="To" class="form-control">
+                <button class="btn btn-warning" ><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <button class="btn btn-success" id="refresh-btn" onclick="show_report()"><span class="glyphicon glyphicon-refresh"></span></button>
               </div>
-              <div class="line" style="height: 5px; width: 10vw;
-                 background-color: white; position: absolute; right:420px; margin-top:-25px;"></div>
+              </div>
+            
+              <!-- <div class="line" style="height: 5px; width: 10vw;
+                 background-color: white; position: absolute; right:420px; margin-top:-25px;"></div> -->
                 <div id="show-report"></div>
 
               <!-- /main content -->

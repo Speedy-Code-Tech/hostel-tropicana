@@ -8,7 +8,6 @@ if(isset($_POST['data'])){
 	$mN = $data[2];
 	$b = $data[3];
 	$a = $data[4];
-	
 
 
 	// $result = $item->insert_item($iN, $sN, $mN, $b, $a, $pD, $eID, $cID, $coID);

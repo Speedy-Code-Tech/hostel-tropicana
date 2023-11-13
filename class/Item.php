@@ -164,71 +164,71 @@ class Item extends Database implements iItem{
 	public function item_report_based_dates($choice, $cat)
 	{
 
-		$sql = "";
+		// $sql = "";
 
-		if ($choice == "Daily") {
-			if ($cat == 'all') {
-				$sql = "SELECT * FROM supp_borrowed WHERE item_created = ?";
-			} else if ($cat == 'Borrowed') {
-				$sql = "SELECT * FROM supp_borrowed WHERE item_created = ? AND status='Borrowed'";
-			} else {
-				$sql = "SELECT * FROM supp_borrowed WHERE item_created = ? AND category = '$cat'";
-			}
-			return $this->getRows($sql, [date('Y-m-d')]);
-		} else if ($choice == 'Weekly') {
-			$date = date('Y-m-d');
-			$month = date('m');
-			$day = date('d');
-			$year = date('Y');
-			$prevWeek6 = $year . '-' . $month . '-' . $day - 6;
-			$prevWeek5 = $year . '-' . $month . '-' . $day - 5;
-			$prevWeek4 = $year . '-' . $month . '-' . $day - 4;
-			$prevWeek3 = $year . '-' . $month . '-' . $day - 3;
-			$prevWeek2 = $year . '-' . $month . '-' . $day - 2;
-			$prevWeek1 = $year . '-' . $month . '-' . $day - 1;
-			if ($cat == 'all') {
-				$sql = "SELECT *
-						FROM supp_borrowed
-						WHERE (item_created = '$prevWeek1' 
-						OR item_created = '$prevWeek2'
-						OR item_created = '$prevWeek3'
-						OR item_created = '$prevWeek4'
-						OR item_created = '$prevWeek5'
-						OR item_created = '$prevWeek6'
-						OR item_created = '$date')";
-			} else if ($cat == 'Borrowed') {
-				$sql = "SELECT *
-						FROM supp_borrowed
-						WHERE (item_created = '$prevWeek1' 
-						OR item_created = '$prevWeek2'
-						OR item_created = '$prevWeek3'
-						OR item_created = '$prevWeek4'
-						OR item_created = '$prevWeek5'
-						OR item_created = '$prevWeek6'
-						OR item_created = '$date') AND status ='Borrowed'";
-			} else {
-				$sql = "SELECT *
-				FROM supp_borrowed
-				WHERE (item_created = '$prevWeek1' 
-				OR item_created = '$prevWeek2'
-				OR item_created = '$prevWeek3'
-				OR item_created = '$prevWeek4'
-				OR item_created = '$prevWeek5'
-				OR item_created = '$prevWeek6'
-				OR item_created = '$date') AND category = '$cat'";
-			}
-			return $this->getRows($sql);
-		} else if ($choice == 'Monthly') {
-			$month = strval('-' . date('m') . '-');
-			if ($cat == 'all') {
-				$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%'";
-			} else if ($cat == 'Borrowed') {
-				$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%' AND status='Borrowed'";
-			} else {
-				$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%' AND category='$cat'";
-			}
-			return $this->getRows($sql);
-		}
+		// if ($choice == "Daily") {
+		// 	if ($cat == 'all') {
+		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created = ?";
+		// 	} else if ($cat == 'Borrowed') {
+		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created = ? AND status='Borrowed'";
+		// 	} else {
+		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created = ? AND category = '$cat'";
+		// 	}
+		// 	return $this->getRows($sql, [date('Y-m-d')]);
+		// } else if ($choice == 'Weekly') {
+		// 	$date = date('Y-m-d');
+		// 	$month = date('m');
+		// 	$day = date('d');
+		// 	$year = date('Y');
+		// 	$prevWeek6 = $year . '-' . $month . '-' . $day - 6;
+		// 	$prevWeek5 = $year . '-' . $month . '-' . $day - 5;
+		// 	$prevWeek4 = $year . '-' . $month . '-' . $day - 4;
+		// 	$prevWeek3 = $year . '-' . $month . '-' . $day - 3;
+		// 	$prevWeek2 = $year . '-' . $month . '-' . $day - 2;
+		// 	$prevWeek1 = $year . '-' . $month . '-' . $day - 1;
+		// 	if ($cat == 'all') {
+		// 		$sql = "SELECT *
+		// 				FROM supp_borrowed
+		// 				WHERE (item_created = '$prevWeek1' 
+		// 				OR item_created = '$prevWeek2'
+		// 				OR item_created = '$prevWeek3'
+		// 				OR item_created = '$prevWeek4'
+		// 				OR item_created = '$prevWeek5'
+		// 				OR item_created = '$prevWeek6'
+		// 				OR item_created = '$date')";
+		// 	} else if ($cat == 'Borrowed') {
+		// 		$sql = "SELECT *
+		// 				FROM supp_borrowed
+		// 				WHERE (item_created = '$prevWeek1' 
+		// 				OR item_created = '$prevWeek2'
+		// 				OR item_created = '$prevWeek3'
+		// 				OR item_created = '$prevWeek4'
+		// 				OR item_created = '$prevWeek5'
+		// 				OR item_created = '$prevWeek6'
+		// 				OR item_created = '$date') AND status ='Borrowed'";
+		// 	} else {
+		// 		$sql = "SELECT *
+		// 		FROM supp_borrowed
+		// 		WHERE (item_created = '$prevWeek1' 
+		// 		OR item_created = '$prevWeek2'
+		// 		OR item_created = '$prevWeek3'
+		// 		OR item_created = '$prevWeek4'
+		// 		OR item_created = '$prevWeek5'
+		// 		OR item_created = '$prevWeek6'
+		// 		OR item_created = '$date') AND category = '$cat'";
+		// 	}
+		// 	return $this->getRows($sql);
+		// } else if ($choice == 'Monthly') {
+		// 	$month = strval('-' . date('m') . '-');
+		// 	if ($cat == 'all') {
+		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%'";
+		// 	} else if ($cat == 'Borrowed') {
+		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%' AND status='Borrowed'";
+		// 	} else {
+		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%' AND category='$cat'";
+		// 	}
+		// 	return $this->getRows($sql);
+		// }
 	} //end item_report
 	public function insert_borrow($one, $two, $three, $four, $five,$six,$seven,$eight,$nine,$ten)
 	{
@@ -282,6 +282,24 @@ class Item extends Database implements iItem{
 		
 		$results = $this->deleteRow($sql);
 		return $results;
+	}
+
+	public function sortingsDate($fromDate, $toDate){
+        $sql="SELECT *
+        FROM supp_borrowed
+        WHERE (date_borrowed>=? AND date_borrowed<=?) OR
+        (item_created>=? AND item_created<=?) 
+        ";
+       
+        $result = $this->getRows($sql,[$fromDate,$toDate,$fromDate,$toDate]);
+        return $result;
+    }
+
+	public function room(){
+		$sql="SELECT * FROM room";
+       
+        $result = $this->getRows($sql);
+        return $result;
 	}
 
 }

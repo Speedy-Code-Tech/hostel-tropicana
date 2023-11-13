@@ -6,6 +6,8 @@ $employees = $employee->get_employees();
 $categories = $item->item_categories();
 $conditions = $item->item_conditions();
 
+$room = $item->room();
+
 ?>
 <div class="modal fade" id="modal-update-equipment">
 	<div class="modal-dialog">
@@ -35,7 +37,15 @@ $conditions = $item->item_conditions();
 							<div class="form-group" >
 									<label class="control-label col-sm-3" for="room-equipment-update">Room/Area:</label>
 									<div class="col-sm-9"> 
-									<input type="text" class="form-control" id="room-equipment-update" >
+									<select name="room" id="room-update-equiptment" class="form-control" onchange="updateEquipt()">
+										<option value="null" >Select Room</option>
+										<?php foreach($room as $r){?>
+											<option value="<?php echo $r['name']?>" ><?php echo $r['name']?></option>
+
+
+										<?php }?>
+									</select>
+									<input type="hidden" class="form-control" id="room-equipment-update" >
 									</div>
 							</div>
 
@@ -65,3 +75,11 @@ $conditions = $item->item_conditions();
 		</div>
 	</div>
 </div>
+<script>
+	function updateEquipt(){
+    let room = $("#room-update-equiptment").val()
+    console.log(room) 
+    $("#room-equipment-update").val(room)
+}
+
+</script>

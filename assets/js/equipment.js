@@ -254,7 +254,7 @@ $(document).on('change', '#report-choice', function(event) {
 	event.preventDefault();
 	/* Act on the event */
 	var choice = $('#report-choice').val();
-	
+
 	
 	$.ajax({
 			url: '../data/show_report.php',
@@ -263,6 +263,7 @@ $(document).on('change', '#report-choice', function(event) {
 				choice: choice
 			},
 			success: function (data) {
+				console.log(data)
 				$('#show-report').html(data);
 			},
 			error: function(){
@@ -347,3 +348,6 @@ $('input[type=radio][name=dates]').change(function() {
 		});
 	} 
 });
+
+
+

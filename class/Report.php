@@ -136,6 +136,17 @@ class Report extends Database {
         return "Sucess";
     }
 
+    public function sortingsDate($fromDate, $toDate){
+        $sql="SELECT *
+        FROM supp_borrowed
+        WHERE (date_borrowed>=? AND date_borrowed<=?) OR
+        (item_created>=? AND item_created<=?) 
+        ";
+       
+        $result = $this->getRows($sql,[$fromDate,$toDate,$fromDate,$toDate]);
+        return $result;
+    }
+
 }
 $reps = new Report();
 

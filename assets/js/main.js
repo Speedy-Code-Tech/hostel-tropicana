@@ -6,6 +6,7 @@ var action = '';
 $(document).on('submit', '#add-item-form', function(event) {
 	// event.preventDefault();
 	/* Act on the event */
+
 	var validate = 0;
 	var form_data = new Array(
 								$('input[id=tagID]'),
@@ -89,6 +90,7 @@ function fill_update_modal(iID){
 				$('#tagID-update').val(data.tagid);
 				$('#supplyname-update').val(data.supplyname);
 				$('#room-update').val(data.room);
+				$('#room-updates-tools').val(data.room).change();
 				$('#brand-update').val(data.brand);
 				$('#quantity-update').val(data.quantity);
 			

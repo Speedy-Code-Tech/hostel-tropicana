@@ -1,3 +1,10 @@
+<?php 
+require_once('../class/Item.php'); 
+require_once('../class/Employee.php'); 
+
+$room = $item->room();
+?>
+
 <div class="modal fade" id="modal-add-tools">
 	<div class="modal-dialog">
 	<div class="modal-content"  style="background-color: rgb(145, 191, 123); padding:10px;">
@@ -26,7 +33,15 @@
 							<div class="form-group" >
 								<label class="control-label col-sm-3" for="room-tools">Room/Area:</label>
 								<div class="col-sm-9"> 
-									<input type="text" class="form-control" id="room-tools">
+								<select name="room" id="room-change-tools" class="form-control" onchange="changeRoomTools()">
+										<option value="null" >Select Room</option>
+										<?php foreach($room as $r){?>
+											<option value="<?php echo $r['name']?>" ><?php echo $r['name']?></option>
+
+
+										<?php }?>
+									</select>
+									<input type="hidden" class="form-control" id="room-tools">
 								</div>
 							</div>
 
