@@ -79,7 +79,7 @@ include_once('../include/header.php'); ?>
                 </select>
                 
                
-               
+               <input type="hidden" id="output-val" value="all">
                  <div style=" display:flex;
 
    
@@ -143,6 +143,66 @@ z-index: 3; align-items: center; gap:2px;">
 </style>
 <script>
   
+$(document).on('change', '#report-choice', function(event) {
+	event.preventDefault();
+  
+  var choice = $('#report-choice').val();
+	let fromDate = $("#From").val()
+    let toDate = $("#To").val()
+   var choices =  $("#output-val").val(choice);
+  
+	$.ajax({
+			url: '../data/show_report.php',
+			type: 'post',
+			data: {
+				choice: choices,
+				fromDates:fromDate,
+				toDates:toDate
+			},
+			success: function (data) {
+				console.log(data)
+				$('#show-report').html(data);
+			},
+			error: function(){
+				alert('Error: L825+');
+			}
+		});
+})
+
+
+
+
+$(document).on('submit', '#date-sorts', function(event) {
+	event.preventDefault();
+
+
+    let fromDate = $("#From").val()
+    let toDate = $("#To").val()
+    var choices =  $('#report-choice').val();
+
+            $.ajax({
+                url: '../data/show_report.php',
+                type: 'post',
+                data: {
+                    // datas: JSON.stringify(data)
+                    choice: choices,
+                    fromDates:fromDate,
+                    toDates:toDate,
+                    status:true
+                },
+                success: function(event){
+                    console.log("Date Sorted", event)
+                    $('#show-report').html(event);
+					
+                },
+                error: (err)=>{
+					console.log("Error",err);
+              
+				}
+            });
+    
+
+});
 </script>
 </body>
 </html>	

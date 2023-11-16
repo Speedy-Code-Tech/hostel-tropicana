@@ -161,35 +161,6 @@ $(document).on('submit', '#modal-returns', function(event) {
 });
 
 
-$(document).on('submit', '#date-sorts', function(event) {
-	event.preventDefault();
-
-    let fromDate = $("#From").val()
-    let toDate = $("#To").val()
-   
-
-            $.ajax({
-                url: '../data/show_report.php',
-                type: 'post',
-                data: {
-                    // datas: JSON.stringify(data)
-                    fromDates:fromDate,
-                    toDates:toDate
-                },
-                success: function(event){
-                    console.log("Date Sorted", event)
-                    $('#show-report').html(event);
-					
-                },
-                error: (err)=>{
-					console.log("Error",err);
-              
-				}
-            });
-    
-
-});
-
 
 function changeRoom(){
     let room = $("#room-change").val()

@@ -253,14 +253,18 @@ $(document).on('submit', '#borrow-equipment-form', function(event) {
 $(document).on('change', '#report-choice', function(event) {
 	event.preventDefault();
 	/* Act on the event */
+	
 	var choice = $('#report-choice').val();
-
+	let fromDate = $("#From").val()
+    let toDate = $("#To").val()
 	
 	$.ajax({
 			url: '../data/show_report.php',
 			type: 'post',
 			data: {
-				choice: choice
+				choice: choice,
+				fromDates:fromDate,
+				toDates:toDate
 			},
 			success: function (data) {
 				console.log(data)

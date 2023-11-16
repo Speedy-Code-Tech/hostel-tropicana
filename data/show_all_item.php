@@ -1,9 +1,7 @@
 <?php 
 require_once('../class/Item.php'); 
 $allItem = $item->get_all_items();
-// echo '<pre>';
-// 	print_r($allItem);
-// echo '</pre>';
+
 ?>
 
 <br />

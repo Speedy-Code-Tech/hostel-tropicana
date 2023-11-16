@@ -161,75 +161,45 @@ class Item extends Database implements iItem{
       			return $this->getRows($sql, ["Borrowed"]);
 		}
 	}//end item_report
-	public function item_report_based_dates($choice, $cat)
-	{
 
-		// $sql = "";
+	public function sorted_with_time_choices($choice,$from,$to){
+		$sql="";
+		if($choice==="all"){
+			$sql="SELECT *
+        FROM supp_borrowed
+        WHERE ((date_borrowed>=? AND date_borrowed<=?) OR
+        (item_created>=? AND item_created<=?))
+        ";
+		}else if($choice==="Borrowed"){
+			$sql="SELECT *
+			FROM supp_borrowed
+			WHERE ((date_borrowed>=? AND date_borrowed<=?) OR
+			(item_created>=? AND item_created<=?)) AND status = '$choice'
+			";
+		}else if($choice==="Supplies"){
+			$sql="SELECT *
+			FROM supp_borrowed
+			WHERE ((date_borrowed>=? AND date_borrowed<=?) OR
+			(item_created>=? AND item_created<=?)) AND category = '$choice'
+			";
+		}else if($choice==="Tools"){
+			$sql="SELECT *
+			FROM supp_borrowed
+			WHERE ((date_borrowed>=? AND date_borrowed<=?) OR
+			(item_created>=? AND item_created<=?)) AND category = '$choice'
+			";
+		}else if($choice==="Equipment"){
+			$sql="SELECT *
+			FROM supp_borrowed
+			WHERE ((date_borrowed>=? AND date_borrowed<=?) OR
+			(item_created>=? AND item_created<=?)) AND category = '$choice'
+			";
+		}
+       
+        $result = $this->getRows($sql,[$from,$to,$from,$to]);
+        return $result;
+	}
 
-		// if ($choice == "Daily") {
-		// 	if ($cat == 'all') {
-		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created = ?";
-		// 	} else if ($cat == 'Borrowed') {
-		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created = ? AND status='Borrowed'";
-		// 	} else {
-		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created = ? AND category = '$cat'";
-		// 	}
-		// 	return $this->getRows($sql, [date('Y-m-d')]);
-		// } else if ($choice == 'Weekly') {
-		// 	$date = date('Y-m-d');
-		// 	$month = date('m');
-		// 	$day = date('d');
-		// 	$year = date('Y');
-		// 	$prevWeek6 = $year . '-' . $month . '-' . $day - 6;
-		// 	$prevWeek5 = $year . '-' . $month . '-' . $day - 5;
-		// 	$prevWeek4 = $year . '-' . $month . '-' . $day - 4;
-		// 	$prevWeek3 = $year . '-' . $month . '-' . $day - 3;
-		// 	$prevWeek2 = $year . '-' . $month . '-' . $day - 2;
-		// 	$prevWeek1 = $year . '-' . $month . '-' . $day - 1;
-		// 	if ($cat == 'all') {
-		// 		$sql = "SELECT *
-		// 				FROM supp_borrowed
-		// 				WHERE (item_created = '$prevWeek1' 
-		// 				OR item_created = '$prevWeek2'
-		// 				OR item_created = '$prevWeek3'
-		// 				OR item_created = '$prevWeek4'
-		// 				OR item_created = '$prevWeek5'
-		// 				OR item_created = '$prevWeek6'
-		// 				OR item_created = '$date')";
-		// 	} else if ($cat == 'Borrowed') {
-		// 		$sql = "SELECT *
-		// 				FROM supp_borrowed
-		// 				WHERE (item_created = '$prevWeek1' 
-		// 				OR item_created = '$prevWeek2'
-		// 				OR item_created = '$prevWeek3'
-		// 				OR item_created = '$prevWeek4'
-		// 				OR item_created = '$prevWeek5'
-		// 				OR item_created = '$prevWeek6'
-		// 				OR item_created = '$date') AND status ='Borrowed'";
-		// 	} else {
-		// 		$sql = "SELECT *
-		// 		FROM supp_borrowed
-		// 		WHERE (item_created = '$prevWeek1' 
-		// 		OR item_created = '$prevWeek2'
-		// 		OR item_created = '$prevWeek3'
-		// 		OR item_created = '$prevWeek4'
-		// 		OR item_created = '$prevWeek5'
-		// 		OR item_created = '$prevWeek6'
-		// 		OR item_created = '$date') AND category = '$cat'";
-		// 	}
-		// 	return $this->getRows($sql);
-		// } else if ($choice == 'Monthly') {
-		// 	$month = strval('-' . date('m') . '-');
-		// 	if ($cat == 'all') {
-		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%'";
-		// 	} else if ($cat == 'Borrowed') {
-		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%' AND status='Borrowed'";
-		// 	} else {
-		// 		$sql = "SELECT * FROM supp_borrowed WHERE item_created LIKE '%$month%' AND category='$cat'";
-		// 	}
-		// 	return $this->getRows($sql);
-		// }
-	} //end item_report
 	public function insert_borrow($one, $two, $three, $four, $five,$six,$seven,$eight,$nine,$ten)
 	{
 		$sql = "INSERT INTO supp_borrowed(item, name,date_borrowed,contactno,whereplace,returndate,quantity,category,tagid,room,status,item_created)

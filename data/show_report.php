@@ -3,23 +3,29 @@ require_once('../class/Item.php');
 require_once('../class/Report.php');
 
 $reports = "";
-	if(isset($_POST['choice'])){
+if(isset($_POST['status'])){
+	$choice = $_POST['choice'];
+	$fromDate =$_POST['fromDates'];//$data[0];//From
+	$toDate = $_POST['toDates'];//$data[1];//To
+	$reports = $item->sorted_with_time_choices($choice,$fromDate,$toDate);
+
+
+}
+	else if(isset($_POST['fromDates']) && isset($_POST['toDates']) && isset($_POST['choice'])){
 		$choice = $_POST['choice'];
-		$reports = $item->item_report($choice);
-
-	}else if(isset($_POST['fromDates']) && isset($_POST['toDates']) ){
-		// $data = json_decode($_POST['datas'], true);
-
 		$fromDate =$_POST['fromDates'];//$data[0];//From
 		$toDate = $_POST['toDates'];//$data[1];//To
+		$reports = $item->sorted_with_time_choices($choice,$fromDate,$toDate);
 	
-					
-		$reports =$item->sortingsDate($fromDate,$toDate);
+
+	}
+	else if(isset($_POST['choice'])){
+		$choice = $_POST['choice'];
+	
+		$reports = $item->item_report($choice);
+	
 	}
 	
-	// echo '<pre>';
-	// 	print_r($reports);
-	// echo '</pre>';
 
 ?>
 
